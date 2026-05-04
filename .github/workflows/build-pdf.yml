@@ -39,10 +39,8 @@ jobs:
           # generating beautiful and modern PDFs)
           npm install -g md-to-pdf
           
-          # Create a config file to fix the "No usable sandbox" error in GitHub Actions
-          echo '{"launch_options": {"args": ["--no-sandbox", "--disable-setuid-sandbox"]}}' > md-to-pdf-config.json
-          
-          # Render the PDF (outputs golang-book.pdf)
+          # Render the PDF using the repository config with custom styles
+          # (config already contains --no-sandbox for GitHub Actions)
           md-to-pdf --config-file md-to-pdf-config.json golang-book.md
 
       - name: Upload PDF to Release
